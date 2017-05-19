@@ -8,7 +8,7 @@ services:
     working_dir: /app
     command: npm start
     ports:
-      - 4200
+      - 4200:4200
 
   frontend.console:
     build: ./frontend-app
@@ -19,19 +19,22 @@ services:
 
   backend:
     build: ./backend-app
+#    image: node:7
     volumes:
       - ./backend-app:/app
     working_dir: /app
     command: npm start
     ports:
-      - 3000
+      - 3000:3000
 
   backend.console:
     build: ./backend-app
+#    image: node:7
     command: bash
     volumes:
       - ./backend-app:/app
     working_dir: /app
+
 
   redis:
     image: redis
